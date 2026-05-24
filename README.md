@@ -44,34 +44,60 @@ After pushing to `main`, enable **GitHub Pages** in the repo:
 
 **https://venontn.github.io/hr-haven-consultancy/**
 
-## Custom domain: www.hrhavenconsultancy.com
+## Custom domain (www + bare domain)
 
-The repo includes a `CNAME` file for **www.hrhavenconsultancy.com**.
+Both of these will work:
+
+- **https://www.hrhavenconsultancy.com** (primary)
+- **https://hrhavenconsultancy.com** (redirects to www)
+
+The repo `CNAME` file is set to `www.hrhavenconsultancy.com`.
 
 ### 1. DNS at your domain registrar
 
-Add this record (replace nothing — use exactly these values):
+Add **all** of these records:
 
-| Type  | Name / Host | Value              | TTL  |
-|-------|-------------|--------------------|------|
-| CNAME | `www`       | `venontn.github.io` | 3600 |
+| Type  | Name / Host | Value                 |
+|-------|-------------|------------------------|
+| CNAME | `www`       | `venontn.github.io`    |
+| A     | `@`         | `185.199.108.153`      |
+| A     | `@`         | `185.199.109.153`      |
+| A     | `@`         | `185.199.110.153`      |
+| A     | `@`         | `185.199.111.153`      |
 
-Do **not** add a CNAME for the bare domain (`hrhavenconsultancy.com`) if you only want `www` — visitors must use **https://www.hrhavenconsultancy.com**.
+- `@` means the bare domain (`hrhavenconsultancy.com`). Some registrars use `@`, others use blank or `hrhavenconsultancy.com` for the host name.
+- Do **not** use a CNAME on `@` — only A records for the bare domain.
+- Remove any old A/CNAME records for `@` or `www` that point elsewhere.
+
+Optional IPv6 (if your registrar supports AAAA for `@`):
+
+| Type | Name / Host | Value              |
+|------|-------------|---------------------|
+| AAAA | `@`         | `2606:50c0:8000::153` |
+| AAAA | `@`         | `2606:50c0:8001::153` |
+| AAAA | `@`         | `2606:50c0:8002::153` |
+| AAAA | `@`         | `2606:50c0:8003::153` |
 
 ### 2. GitHub Pages settings
 
 1. Open [Pages settings](https://github.com/venontn/hr-haven-consultancy/settings/pages)
 2. Under **Custom domain**, enter: `www.hrhavenconsultancy.com`
 3. Click **Save**
-4. Wait for DNS check, then enable **Enforce HTTPS**
+4. Wait until DNS shows as valid, then enable **Enforce HTTPS**
+
+GitHub will redirect `hrhavenconsultancy.com` → `www.hrhavenconsultancy.com` automatically.
 
 ### 3. When it’s live
 
-After DNS propagates (often 15 minutes–48 hours):
+After DNS propagates (often 15 minutes–48 hours), both URLs should open the site:
 
-**https://www.hrhavenconsultancy.com**
+- https://www.hrhavenconsultancy.com  
+- https://hrhavenconsultancy.com  
 
-Check DNS: [https://www.whatsmydns.net/#CNAME/www.hrhavenconsultancy.com](https://www.whatsmydns.net/#CNAME/www.hrhavenconsultancy.com)
+Check DNS:
+
+- [CNAME for www](https://www.whatsmydns.net/#CNAME/www.hrhavenconsultancy.com)  
+- [A for apex](https://www.whatsmydns.net/#A/hrhavenconsultancy.com)
 
 ## Other hosting
 

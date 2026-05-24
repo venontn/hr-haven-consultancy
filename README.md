@@ -44,6 +44,35 @@ After pushing to `main`, enable **GitHub Pages** in the repo:
 
 **https://venontn.github.io/hr-haven-consultancy/**
 
+## Custom domain: www.hrhavenconsultancy.com
+
+The repo includes a `CNAME` file for **www.hrhavenconsultancy.com**.
+
+### 1. DNS at your domain registrar
+
+Add this record (replace nothing — use exactly these values):
+
+| Type  | Name / Host | Value              | TTL  |
+|-------|-------------|--------------------|------|
+| CNAME | `www`       | `venontn.github.io` | 3600 |
+
+Do **not** add a CNAME for the bare domain (`hrhavenconsultancy.com`) if you only want `www` — visitors must use **https://www.hrhavenconsultancy.com**.
+
+### 2. GitHub Pages settings
+
+1. Open [Pages settings](https://github.com/venontn/hr-haven-consultancy/settings/pages)
+2. Under **Custom domain**, enter: `www.hrhavenconsultancy.com`
+3. Click **Save**
+4. Wait for DNS check, then enable **Enforce HTTPS**
+
+### 3. When it’s live
+
+After DNS propagates (often 15 minutes–48 hours):
+
+**https://www.hrhavenconsultancy.com**
+
+Check DNS: [https://www.whatsmydns.net/#CNAME/www.hrhavenconsultancy.com](https://www.whatsmydns.net/#CNAME/www.hrhavenconsultancy.com)
+
 ## Other hosting
 
 Upload all files to any static host (Netlify, Vercel, etc.). No build step required.

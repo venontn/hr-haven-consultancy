@@ -34,6 +34,16 @@ hr-haven-consultancy/
 - **Facebook:** Update the Facebook link in `index.html` with your page URL.
 - **Services:** Edit the services section if you have a specific service list from your profile.
 
-## Deployment
+## Live site (GitHub Pages)
 
-Upload all files to any static host (GitHub Pages, Netlify, Vercel, or your web hosting provider). No build step required.
+After pushing to `main`, enable **GitHub Pages** in the repo:
+
+1. Open https://github.com/venontn/hr-haven-consultancy/settings/pages  
+2. Under **Build and deployment**, set **Source** to **GitHub Actions**  
+3. Wait for the workflow to finish (Actions tab), then visit:
+
+**https://venontn.github.io/hr-haven-consultancy/**
+
+## Other hosting
+
+Upload all files to any static host (Netlify, Vercel, etc.). No build step required.
